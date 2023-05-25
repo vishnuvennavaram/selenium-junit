@@ -46,7 +46,7 @@ public class BasePage {
 			}
 			
 			driver.findElement(by).findElement(By.cssSelector("div")).click();
-			clickElement(By.cssSelector("[aria-label=" + value + "] span"));
+			clickElement(By.cssSelector("[aria-label='" + value + "'] span"));
 		}
 		
 		public void scrollToElement(By by) {
@@ -59,5 +59,22 @@ public class BasePage {
 			enterText(By.name("user_name"),name);
 			enterText(By.name("password"), password);
 			clickElement(By.className("loginBtn"));
+		}
+	
+		public void clickUsingJsExecutor(By by) {
+			WebElement element=driver.findElement(by);
+			JavascriptExecutor js=(JavascriptExecutor) driver;
+			js.executeScript("arguments[0].click();", element);
+		}
+	
+		public void dropdownByJs(By by,String value) {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			driver.findElement(by).findElement(By.cssSelector("div")).click();
+			clickUsingJsExecutor(By.cssSelector("[aria-label='" + value + "'] span"));
 		}
 }
