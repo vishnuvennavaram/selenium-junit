@@ -77,4 +77,46 @@ public class BasePage {
 			clickUsingJsExecutor(by);
 			clickElement(By.cssSelector("[aria-label='" + value + "'] span"));
 		}
+	
+		
+		// WebElement from = driver.findElement(By.xpath("//span[contains(text(),'four parameters')]/.."));
+    		// WebElement to = driver.findElement(By.id("data-onboarding-scroll-style2"));
+    		public void dragAndDrop(WebElement from, WebElement to) throws AWTException {
+        		Actions action = new Actions(driver);
+			try {
+			    Thread.sleep(5000);
+			} catch (InterruptedException e) {
+			    throw new RuntimeException(e);
+			}
+
+			action.moveByOffset(to.getLocation().getX(), to.getLocation().getY()).click().build().perform();
+
+			try {
+			    clickOnSpecificLocation(from.getLocation().getX(), from.getLocation().getY(), to.getLocation().getX(), to.getLocation().getY());
+			} catch (InterruptedException e) {
+			    throw new RuntimeException(e);
+			}
+			JavascriptExecutor js  = (JavascriptExecutor) driver;
+			Robot robot = new Robot();
+			robot.mouseMove(from.getLocation().getX(), to.getLocation().getY());
+
+			try {
+			    Thread.sleep(5000);
+			} catch (InterruptedException e) {
+			    throw new RuntimeException(e);
+			}
+			action.clickAndHold(from).moveToElement(to).release().perform();
+    		}
+    
+		public void clickOnSpecificLocation(int x , int y,int x2, int y2) throws AWTException, InterruptedException{
+			Robot b11 = new Robot();
+			b11.mouseMove(x, y);
+			b11.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			Thread.sleep(1000);//There is pause in miliseconds
+			b11.mouseMove(x2, y2);
+			b11.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+
+		}
+	
+	
 }
