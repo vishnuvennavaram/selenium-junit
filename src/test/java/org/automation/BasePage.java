@@ -75,6 +75,6 @@ public class BasePage {
 			}
 			
 			clickUsingJsExecutor(by);
-			clickUsingJsExecutor(By.cssSelector("[aria-label='" + value + "'] span"));
+			clickElement(By.cssSelector("[aria-label='" + value + "'] span"));
 		}
 }
