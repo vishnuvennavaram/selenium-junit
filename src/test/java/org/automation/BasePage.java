@@ -74,7 +74,7 @@ public class BasePage {
 				e.printStackTrace();
 			}
 			
-			driver.findElement(by).findElement(By.cssSelector("div")).click();
+			clickUsingJsExecutor(by);
 			clickUsingJsExecutor(By.cssSelector("[aria-label='" + value + "'] span"));
 		}
 }
