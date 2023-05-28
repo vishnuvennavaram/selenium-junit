@@ -96,7 +96,7 @@ public class BasePage {
 		public void dragAndDropUsingJS(WebElement from, WebElement to) {
 			String script = null;
 			try {
-			    script = new Scanner(new File("src/test/java/resources/dragAndDrop.js")).useDelimiter("\\Z").next();
+			    script = new Scanner(new File("src/test/java/dragAndDrop.js")).useDelimiter("\\Z").next();
 			} catch (FileNotFoundException e) {
 			    throw new RuntimeException(e);
 			}
