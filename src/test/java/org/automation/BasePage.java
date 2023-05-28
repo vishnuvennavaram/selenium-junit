@@ -66,18 +66,6 @@ public class BasePage {
 			JavascriptExecutor js=(JavascriptExecutor) driver;
 			js.executeScript("arguments[0].click();", element);
 		}
-	
-		public void dropdownByJs(By by,String value) {
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-			clickUsingJsExecutor(by);
-			clickElement(By.cssSelector("[aria-label='" + value + "'] span"));
-		}
-	
 		
 		// WebElement from = driver.findElement(By.xpath("//span[contains(text(),'four parameters')]/.."));
     		// WebElement to = driver.findElement(By.id("data-onboarding-scroll-style2"));
